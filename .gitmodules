@@ -19,3 +19,7 @@
 [submodule "libraries/aws/jobs-for-aws-iot-embedded-sdk"]
 	path = libraries/aws/jobs-for-aws-iot-embedded-sdk
 	url = https://github.com/aws/jobs-for-aws-iot-embedded-sdk.git
+[submodule "libraries/3rdparty/cryptoauthlib"]
+	path = libraries/3rdparty/cryptoauthlib
+	url = git@github.com:glassboard-dev/rollo-cryptoauthlib.git
+	branch = rollo
