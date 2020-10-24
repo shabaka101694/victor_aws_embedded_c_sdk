@@ -85,7 +85,9 @@
  *
  * #define S3_PRESIGNED_GET_URL         "...insert here..."
  */
+#define S3_PRESIGNED_GET_URL         "fake_s3_url_for_compilation"
 
+#define S3_PRESIGNED_PUT_URL         "fake_s3_url_for_compilation"
 /**
  * @brief Transport timeout in milliseconds for transport send and receive.
  */

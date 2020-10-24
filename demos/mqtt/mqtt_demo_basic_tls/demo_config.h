@@ -60,7 +60,7 @@
  *
  * #define BROKER_ENDPOINT               "...insert here..."
  */
-
+#define BROKER_ENDPOINT               "victor.endpoint"
 /**
  * @brief MQTT server port number.
  *
@@ -75,7 +75,7 @@
  *
  * #define ROOT_CA_CERT_PATH         ".....insert here...."
  */
-
+#define ROOT_CA_CERT_PATH         "/home/vjohns//rollo_crypto/aws-iot-device-sdk-embedded-C/demo_files/victor.pem"
 /**
  * @brief MQTT client identifier.
  *

@@ -55,12 +55,12 @@
  * A Mosquitto MQTT broker can be setup locally for running this demo against
  * it. Please refer to the instructions in https://mosquitto.org/ for running
  * a Mosquitto broker locally.
- * Alternatively,instructions to run Mosquitto server on Docker container can
- * be viewed in the README.md of the root directory.
+ * Alternatively, instructions to run a Mosquitto broker on a Docker container
+ * can be viewed in the README.md of the root directory.
  *
  * #define BROKER_ENDPOINT               "...insert here..."
  */
-
+#define BROKER_ENDPOINT               "victor.endpoint"
 /**
  * @brief MQTT server port number.
  *
@@ -73,31 +73,16 @@
  *
  * This certificate should be PEM-encoded.
  *
- * #define ROOT_CA_CERT_PATH               "....insert here...."
+ * #define ROOT_CA_CERT_PATH         ".....insert here...."
  */
-
+#define ROOT_CA_CERT_PATH         "/home/vjohns//rollo_crypto/aws-iot-device-sdk-embedded-C/demo_files/victor.pem"
 /**
  * @brief MQTT client identifier.
  *
  * No two clients may use the same client identifier simultaneously.
  */
 #ifndef CLIENT_IDENTIFIER
-    #define CLIENT_IDENTIFIER    "testclient1"
+    #define CLIENT_IDENTIFIER    "testclient"
 #endif
-
-/**
- * @brief The max size of the registry in the subscription manager.
- *
- * The registry of the subscription manager component of the demo represents
- * a list of pairs of topic filter and its subscription callback. The
- * subscription callback is invoked when an incoming PUBLISH message is received
- * on a matching topic in the demo.
- * The memory of the registry is statically allocated whose size is dependent
- * on the value of this macro.
- *
- * As this demo uses 3 topic filters, the minimum value of this config should be
- * 3 for a successful execution of the demo.
- */
-#define MAX_SUBSCRIPTION_CALLBACK_RECORDS    5
 
 #endif /* ifndef DEMO_CONFIG_H */

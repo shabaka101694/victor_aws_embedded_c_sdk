@@ -60,14 +60,22 @@
  *
  * #define BROKER_ENDPOINT               "...insert here..."
  */
-
+#define BROKER_ENDPOINT               "victor.endpoint"
 /**
  * @brief MQTT server port number.
  *
- * In general, port 1883 is for unsecured MQTT connections.
+ * In general, port 8883 is for secured MQTT connections.
  */
-#define BROKER_PORT    ( 1883 )
+#define BROKER_PORT    ( 8883 )
 
+/**
+ * @brief Path of the file containing the server's root CA certificate.
+ *
+ * This certificate should be PEM-encoded.
+ *
+ * #define ROOT_CA_CERT_PATH         ".....insert here...."
+ */
+#define ROOT_CA_CERT_PATH         "/home/vjohns//rollo_crypto/aws-iot-device-sdk-embedded-C/demo_files/victor.pem"
 /**
  * @brief MQTT client identifier.
  *

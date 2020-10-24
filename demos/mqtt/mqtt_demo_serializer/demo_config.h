@@ -20,8 +20,8 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef DEMO_CONFIG_H_
-#define DEMO_CONFIG_H_
+#ifndef DEMO_CONFIG_H
+#define DEMO_CONFIG_H
 
 /**************************************************/
 /******* DO NOT CHANGE the following order ********/
@@ -55,19 +55,27 @@
  * A Mosquitto MQTT broker can be setup locally for running this demo against
  * it. Please refer to the instructions in https://mosquitto.org/ for running
  * a Mosquitto broker locally.
- * Alternatively,instructions to run Mosquitto server on Docker container can
- * be viewed in the README.md of the root directory.
+ * Alternatively, instructions to run a Mosquitto broker on a Docker container
+ * can be viewed in the README.md of the root directory.
  *
  * #define BROKER_ENDPOINT               "...insert here..."
  */
-
+#define BROKER_ENDPOINT               "victor.endpoint"
 /**
  * @brief MQTT server port number.
  *
- * In general, port 1883 is for unsecured MQTT connections.
+ * In general, port 8883 is for secured MQTT connections.
  */
-#define BROKER_PORT    1883
+#define BROKER_PORT    ( 8883 )
 
+/**
+ * @brief Path of the file containing the server's root CA certificate.
+ *
+ * This certificate should be PEM-encoded.
+ *
+ * #define ROOT_CA_CERT_PATH         ".....insert here...."
+ */
+#define ROOT_CA_CERT_PATH         "/home/vjohns//rollo_crypto/aws-iot-device-sdk-embedded-C/demo_files/victor.pem"
 /**
  * @brief MQTT client identifier.
  *

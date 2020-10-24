@@ -18,7 +18,6 @@ add_executable(
 target_link_libraries(
     ${DEMO_NAME}
     PRIVATE
-        mosquitto
 )
 
 target_include_directories(
