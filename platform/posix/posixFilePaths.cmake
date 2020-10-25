@@ -5,6 +5,10 @@
 # Files specific to the repository such as test runner, platform tests
 # are not added to the variables.
 
+# mbedtls over atec device utility source files.
+set( MBED_ATEC_SOURCES
+     ${CMAKE_CURRENT_LIST_DIR}/transport/src/atec_mbedtls_posix.c )
+
 # Sockets utility source files.
 set( SOCKETS_SOURCES
      ${CMAKE_CURRENT_LIST_DIR}/transport/src/sockets_posix.c )

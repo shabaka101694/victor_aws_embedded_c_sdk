@@ -27,3 +27,20 @@ if(${BUILD_TESTS})
 
     target_link_libraries(cmock unity)
 endif()
+# Global Build Settings for building cryptoauthlib 
+set(ENABLE_TESTING OFF CACHE INTERNAL "")
+include_directories(cryptoauthlib/lib 
+                    build/cryptoauthlib/lib 
+                    cryptoauthlib/third_party/mbedtls/include 
+                    cryptoauthlib/lib/mbedtls)
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DMBEDTLS_CONFIG_FILE=\\\"mbedtls_config.h\\\"")
+
+set(LIBS pthread)
+
+set(ATCA_BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
+set(ATCA_MBEDTLS ON CACHE INTERNAL "")
+set(ATCA_HAL_I2C ON CACHE INTERNAL "")
+
+# Add cryptoauthlib
+add_subdirectory(cryptoauthlib/lib)

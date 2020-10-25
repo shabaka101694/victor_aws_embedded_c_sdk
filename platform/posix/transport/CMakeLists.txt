@@ -13,7 +13,14 @@ if( NOT EXISTS ${MODULES_DIR}/standard/coreMQTT/source )
 endif()
 
 set( TRANSPORT_INTERFACE_INCLUDE_DIR
-     ${MODULES_DIR}/standard/coreMQTT/source/portable )
+     ${MODULES_DIR}/standard/coreMQTT/source/portable
+     ${CMAKE_SOURCE_DIR}/libraries/3rdparty/cryptoauthlib/lib 
+      ${CMAKE_SOURCE_DIR}/build/libraries/3rdparty/cryptoauthlib/lib 
+      ${CMAKE_SOURCE_DIR}/libraries/3rdparty/cryptoauthlib/third_party/mbedtls/include 
+      ${CMAKE_SOURCE_DIR}/libraries/3rdparty/cryptoauthlib/lib/mbedtls)
+
+
+
 
 # Create target for sockets utility.
 add_library( sockets_posix
@@ -33,17 +40,25 @@ target_link_libraries( plaintext_posix
                        PUBLIC
                            sockets_posix )
 
+# Create target for mbedtls over atec device utility.
+add_library( atec_mbedtls_posix
+                ${MBED_ATEC_SOURCES} )
+
+target_link_libraries( atec_mbedtls_posix
+                            PUBLIC
+                                sockets_posix )
+
 # Create target for POSIX implementation of OpenSSL.
 add_library( openssl_posix
                 ${OPENSSL_TRANSPORT_SOURCES} )
 
 set( OPENSSL_USE_STATIC_LIBS TRUE )
-find_package( OpenSSL REQUIRED )
+find_package( OpenSSL  )
 
 # Verify the minimum OpenSSL version required
-if( OPENSSL_VERSION MATCHES "0.9$" OR OPENSSL_VERSION MATCHES "1.0$"  )
-    message( FATAL_ERROR "OpenSSL 1.1.0 or later required: OpenSSL ${OPENSSL_VERSION} found." )
-endif()
+#if( OPENSSL_VERSION MATCHES "0.9$" OR OPENSSL_VERSION MATCHES "1.0$"  )
+#    message( FATAL_ERROR "OpenSSL 1.1.0 or later required: OpenSSL ${OPENSSL_VERSION} found." )
+#endif()
 
 set( CMAKE_THREAD_PREFER_PTHREAD ON )
 find_package( Threads REQUIRED )
@@ -52,9 +67,6 @@ target_link_libraries( openssl_posix
                        PUBLIC
                           sockets_posix
                        PRIVATE
-                          # This variable is set by the built-in FindOpenSSL.cmake
-                          # and contains the path to the actual library.
-                          ${OPENSSL_LIBRARIES}
                           # SSL uses Threads and on some platforms require
                           # explicit linking.
                           Threads::Threads
